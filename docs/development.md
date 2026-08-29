@@ -112,6 +112,8 @@ Linux runs Harness the way Windows does — as an ordinary child process of the 
 
 Automatic updates are off on Linux: `supportsAutoUpdates` covers only packaged macOS and Windows builds, and there is no Linux update feed behind the configured `publish` URL. Check for Updates reports that rather than failing, and a Linux build is upgraded by installing the next artifact.
 
+Every packaged build carries `LICENSE.lgpl-3.0.txt` and `THIRD-PARTY-NOTICES.md` beside the application binary, next to Electron's own `LICENSE.electron.txt`. They cover the prebuilt libvips that `sharp` bundles, which is LGPL and ships no license text of its own, and they are what lets the build be redistributed without the host taking on an unmet obligation. Revisit `build/licenses/THIRD-PARTY-NOTICES.md` when a dependency upgrade adds or drops a component under a copyleft license.
+
 For local unsigned development packages, use the corresponding `package:dev:*` command. Before handing off a Windows installer, verify that `resources/app/node_modules/node/bin/node.exe` exists in `win-unpacked` and require the packaged Windows Harness smoke test to pass.
 
 Formal release artifacts are built, signed, and published by the tag workflow. A local build or pull-request check is not formal release evidence.

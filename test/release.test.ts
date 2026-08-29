@@ -57,6 +57,7 @@ describe('GitHub release contract', () => {
       build: {
         artifactName: string
         extraResources: Array<{ from: string; to: string }>
+        extraFiles: Array<{ from: string; to: string }>
         win: { target: Array<{ target: string; arch: string[] }> }
         nsis: { artifactName: string; include: string }
         linux: {
@@ -93,6 +94,18 @@ describe('GitHub release contract', () => {
       from: 'build/dsh-desktop.patch.yml',
       to: 'dsh-desktop.patch.yml'
     })
+    // sharp bundles a prebuilt libvips under the LGPL, which obliges whoever
+    // hosts a build to carry its license text and a route to the corresponding
+    // source. These ride beside Electron's own notices at the application root
+    // so the obligation travels inside the artifact rather than alongside it.
+    expect(packageJson.build.extraFiles).toContainEqual({
+      from: 'build/licenses/LGPL-3.0.txt',
+      to: 'LICENSE.lgpl-3.0.txt'
+    })
+    expect(packageJson.build.extraFiles).toContainEqual({
+      from: 'build/licenses/THIRD-PARTY-NOTICES.md',
+      to: 'THIRD-PARTY-NOTICES.md'
+    })
     expect(packageJson.build.nsis.artifactName).toBe(
       'dsh-desktop-windows-${arch}-setup.${ext}'
     )
@@ -117,6 +130,26 @@ describe('GitHub release contract', () => {
     // iconless entry beside it.
     expect(packageJson.desktopName).toBe('dsh-desktop.desktop')
     expect(packageJson.build.linux.syncDesktopName).toBe(true)
+  })
+
+  it('ships a complete LGPL text and a route to the corresponding source', async () => {
+    const license = await readFile(
+      path.join(projectRoot, 'build', 'licenses', 'LGPL-3.0.txt'),
+      'utf8'
+    )
+    const notices = await readFile(
+      path.join(projectRoot, 'build', 'licenses', 'THIRD-PARTY-NOTICES.md'),
+      'utf8'
+    )
+
+    // The LGPL is not self-contained: it supplements the GPL rather than
+    // restating it, so a copy carrying only the Lesser text leaves out the
+    // terms it defers to.
+    expect(license).toContain('GNU LESSER GENERAL PUBLIC LICENSE')
+    expect(license).toContain('GNU GENERAL PUBLIC LICENSE')
+    expect(license).toContain('END OF TERMS AND CONDITIONS')
+    expect(notices).toContain('https://github.com/lovell/sharp-libvips')
+    expect(notices).toContain('LICENSE.lgpl-3.0.txt')
   })
 
   it('turns a selected Windows drive root into an application directory', async () => {
