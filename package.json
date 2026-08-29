@@ -361,6 +361,16 @@
         "to": "windows-menu.html"
       }
     ],
+    "extraFiles": [
+      {
+        "from": "build/licenses/LGPL-3.0.txt",
+        "to": "LICENSE.lgpl-3.0.txt"
+      },
+      {
+        "from": "build/licenses/THIRD-PARTY-NOTICES.md",
+        "to": "THIRD-PARTY-NOTICES.md"
+      }
+    ],
     "publish": [
       {
         "provider": "generic",
