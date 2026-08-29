@@ -11,6 +11,10 @@ module.exports = {
   extraMetadata: {
     name: 'dsh-desktop-dev',
     productName: 'DSH Desktop Dev',
+    // Linux reads this back as the window's app_id and the .desktop filename.
+    // Sharing the production name would make a development build take over the
+    // installed product's launcher entry.
+    desktopName: 'dsh-desktop-dev.desktop',
     dshDesktopChannel: 'development'
   },
   artifactName: 'dsh-desktop-dev-${os}-${arch}.${ext}',

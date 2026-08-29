@@ -16,6 +16,7 @@
   <a href="LICENSE"><img alt="Лицензия: MIT" src="https://img.shields.io/badge/License-MIT-171513.svg" /></a>
   <img alt="macOS" src="https://img.shields.io/badge/macOS-Apple%20Silicon%20%7C%20Intel-171513.svg" />
   <img alt="Windows" src="https://img.shields.io/badge/Windows-x64-171513.svg" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-x64-171513.svg" />
 </p>
 
 ![DSH Desktop с переносимыми Preset, поставщиками моделей и управлением с телефона](docs/images/dsh-desktop-hero-v020.png)
@@ -90,7 +91,8 @@ open -a "DSH Desktop" --args --safe-mode
 | macOS Intel | Подписанные и нотариально заверенные DMG/ZIP | Поддерживается |
 | Windows x64 | Подписанный установщик NSIS | Поддерживается |
 | Windows ARM64 | — | Не поддерживается |
-| Linux | — | Не поддерживается |
+| Linux x64 | AppImage, пакет pacman и архив | Поддерживается, сборка из исходников |
+| Linux ARM64 | — | Не поддерживается |
 
 Harness содержит нативные зависимости, поэтому каждый выпуск собирается на соответствующей операционной системе и архитектуре.
 

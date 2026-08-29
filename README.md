@@ -16,6 +16,7 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-171513.svg" /></a>
   <img alt="macOS" src="https://img.shields.io/badge/macOS-Apple%20Silicon%20%7C%20Intel-171513.svg" />
   <img alt="Windows" src="https://img.shields.io/badge/Windows-x64-171513.svg" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-x64-171513.svg" />
 </p>
 
 ![DSH Desktop overview with portable presets, model providers, and phone control](docs/images/dsh-desktop-hero-v020.png)
@@ -91,7 +92,8 @@ open -a "DSH Desktop" --args --safe-mode
 | macOS Intel | Signed and notarized DMG/ZIP | Supported |
 | Windows x64 | Code-signed NSIS installer | Supported |
 | Windows ARM64 | — | Not currently supported |
-| Linux | — | Not currently supported |
+| Linux x64 | AppImage, pacman package, and tarball | Supported, built from source |
+| Linux ARM64 | — | Not currently supported |
 
 Harness includes target-native dependencies, so every release artifact is built on the matching operating system and architecture.
 

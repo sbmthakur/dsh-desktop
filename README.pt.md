@@ -16,6 +16,7 @@
   <a href="LICENSE"><img alt="Licença: MIT" src="https://img.shields.io/badge/License-MIT-171513.svg" /></a>
   <img alt="macOS" src="https://img.shields.io/badge/macOS-Apple%20Silicon%20%7C%20Intel-171513.svg" />
   <img alt="Windows" src="https://img.shields.io/badge/Windows-x64-171513.svg" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-x64-171513.svg" />
 </p>
 
 ![DSH Desktop com Preset portáteis, provedores de modelos e controle pelo celular](docs/images/dsh-desktop-hero-v020.png)
@@ -90,7 +91,8 @@ open -a "DSH Desktop" --args --safe-mode
 | macOS Intel | DMG/ZIP assinados e notarizados | Compatível |
 | Windows x64 | Instalador NSIS assinado | Compatível |
 | Windows ARM64 | — | Não compatível atualmente |
-| Linux | — | Não compatível atualmente |
+| Linux x64 | AppImage, pacote pacman e tarball | Compatível, compilado a partir do código-fonte |
+| Linux ARM64 | — | Não compatível atualmente |
 
 O Harness inclui dependências nativas, portanto cada artefato é compilado no sistema operacional e na arquitetura correspondentes.
 
