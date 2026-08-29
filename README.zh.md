@@ -15,6 +15,7 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-171513.svg" /></a>
   <img alt="macOS" src="https://img.shields.io/badge/macOS-Apple%20Silicon%20%7C%20Intel-171513.svg" />
   <img alt="Windows" src="https://img.shields.io/badge/Windows-x64-171513.svg" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-x64-171513.svg" />
 </p>
 
 ![DSH Desktop 的 Preset、模型提供方与手机控制能力](docs/images/dsh-desktop-hero-v020.png)
@@ -90,7 +91,8 @@ open -a "DSH Desktop" --args --safe-mode
 | macOS Intel | 已签名并通过公证的 DMG/ZIP | 支持 |
 | Windows x64 | 已完成代码签名的 NSIS 安装包 | 支持 |
 | Windows ARM64 | — | 当前不支持 |
-| Linux | — | 当前不支持 |
+| Linux x64 | AppImage、pacman 软件包与压缩包 | 支持，需自行构建 |
+| Linux ARM64 | — | 当前不支持 |
 
 Harness 包含目标平台原生依赖，因此每一种正式安装包都在对应操作系统与架构上构建。
 

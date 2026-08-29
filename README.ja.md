@@ -15,6 +15,7 @@
   <a href="LICENSE"><img alt="ライセンス: MIT" src="https://img.shields.io/badge/License-MIT-171513.svg" /></a>
   <img alt="macOS" src="https://img.shields.io/badge/macOS-Apple%20Silicon%20%7C%20Intel-171513.svg" />
   <img alt="Windows" src="https://img.shields.io/badge/Windows-x64-171513.svg" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-x64-171513.svg" />
 </p>
 
 ![ポータブル Preset、モデルプロバイダー、スマートフォン連携を備えた DSH Desktop](docs/images/dsh-desktop-hero-v020.png)
@@ -89,7 +90,8 @@ open -a "DSH Desktop" --args --safe-mode
 | macOS Intel | 署名・公証済み DMG/ZIP | 対応 |
 | Windows x64 | コード署名済み NSIS インストーラー | 対応 |
 | Windows ARM64 | — | 未対応 |
-| Linux | — | 未対応 |
+| Linux x64 | AppImage、pacman パッケージ、tarball | 対応（ソースからビルド） |
+| Linux ARM64 | — | 未対応 |
 
 Harness にはターゲット固有のネイティブ依存関係が含まれるため、各リリースは対応する OS とアーキテクチャ上でビルドされます。
 

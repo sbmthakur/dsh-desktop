@@ -59,8 +59,17 @@ describe('GitHub release contract', () => {
         extraResources: Array<{ from: string; to: string }>
         win: { target: Array<{ target: string; arch: string[] }> }
         nsis: { artifactName: string; include: string }
+        linux: {
+          icon: string
+          executableName: string
+          category: string
+          syncDesktopName: boolean
+          maintainer: string
+          target: Array<{ target: string; arch: string[] }>
+        }
         portable?: unknown
       }
+      desktopName: string
     }
 
     expect(packageJson.build.artifactName).toBe('dsh-desktop-${os}-${arch}.${ext}')
@@ -90,6 +99,24 @@ describe('GitHub release contract', () => {
     expect(packageJson.build.nsis.include).toBe('build/installer.nsh')
     expect(packageJson.build.win.target).toEqual([{ target: 'nsis', arch: ['x64'] }])
     expect(packageJson.build.portable).toBeUndefined()
+    expect(packageJson.build.linux.icon).toBe('build/icon.png')
+    expect(packageJson.build.linux.target).toEqual([
+      { target: 'AppImage', arch: ['x64'] },
+      { target: 'pacman', arch: ['x64'] },
+      { target: 'tar.gz', arch: ['x64'] }
+    ])
+    // The pacman target goes through fpm, which refuses to build without a
+    // maintainer contact address. `author` carries no email, so the whole Linux
+    // build fails on the last target unless this one is spelled Name <email>.
+    expect(packageJson.build.linux.maintainer).toMatch(/^.+ <[^@\s]+@[^@\s]+\.[^@\s]+>$/)
+    expect(packageJson.build.linux.executableName).toBe('dsh-desktop')
+    // Electron takes the Linux window's app_id from `desktopName`, and
+    // `syncDesktopName` is what makes the generated .desktop file claim that
+    // same string in its filename and StartupWMClass. Without the pair, a
+    // running window never matches its launcher and the dock shows a second,
+    // iconless entry beside it.
+    expect(packageJson.desktopName).toBe('dsh-desktop.desktop')
+    expect(packageJson.build.linux.syncDesktopName).toBe(true)
   })
 
   it('turns a selected Windows drive root into an application directory', async () => {

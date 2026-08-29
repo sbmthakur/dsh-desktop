@@ -6,9 +6,9 @@ This guide covers local development, validation, patch maintenance, and target-n
 
 - Node.js 22 or later
 - npm
-- macOS on Apple Silicon or Intel, or Windows x64
+- macOS on Apple Silicon or Intel, Windows x64, or Linux x64
 
-DSH Desktop currently pins `@deepseek-ai/dsh@0.1.1-rc.2`. Windows packages bundle a target-native Node.js runtime for Harness, while macOS uses an Electron UtilityProcess. Both are independent of the Node.js version used to run development commands.
+DSH Desktop currently pins `@deepseek-ai/dsh@0.1.1-rc.2`. Windows and Linux packages bundle a target-native Node.js runtime for Harness, while macOS uses an Electron UtilityProcess. Both are independent of the Node.js version used to run development commands.
 
 ## Local setup
 
@@ -87,9 +87,30 @@ npm run package:mac:x64
 
 # Windows x64 NSIS installer, on a Windows x64 machine or runner
 npm run package:win
+
+# Linux x64 AppImage, pacman package, and tarball, on a Linux x64 machine or runner
+npm run package:linux
 ```
 
 Do not invoke `electron-builder --win` from macOS or Linux for a distributable Windows package. The target verification scripts intentionally reject host/target mismatches.
+
+## Linux notes
+
+Linux packaging produces three artifacts from one run: `dsh-desktop-linux-x86_64.AppImage`, which runs on any distribution without installation, `dsh-desktop-linux-x64.pacman` for Arch-family systems, and `dsh-desktop-linux-x64.tar.gz` for manual installation.
+
+The pacman target is built by `fpm`, which electron-builder downloads on first use, and which refuses to build without a maintainer contact address. `author` in `package.json` carries no email, so `linux.maintainer` supplies one as `"Name <email>"`. Adding `deb` or `rpm` needs nothing further; dropping `linux.maintainer` breaks all three.
+
+That bundled `fpm` ships its own Ruby, which is linked against `libcrypt.so.1`. Arch has moved to `libcrypt.so.2`, so on an Arch host the pacman target aborts with `ruby: error while loading shared libraries: libcrypt.so.1` until the compatibility library is installed:
+
+```bash
+sudo pacman -S --needed libxcrypt-compat
+```
+
+The AppImage and tarball targets do not go through `fpm` and build without it.
+
+Linux runs Harness the way Windows does — as an ordinary child process of the bundled Node.js runtime rather than an Electron UtilityProcess, which is a macOS-only path taken for TCC disclaiming. The tray, the custom title bar, and the close-to-tray behavior stay Windows-only; a Linux window uses the native frame and the native application menu, and closing it quits the app.
+
+Automatic updates are off on Linux: `supportsAutoUpdates` covers only packaged macOS and Windows builds, and there is no Linux update feed behind the configured `publish` URL. Check for Updates reports that rather than failing, and a Linux build is upgraded by installing the next artifact.
 
 For local unsigned development packages, use the corresponding `package:dev:*` command. Before handing off a Windows installer, verify that `resources/app/node_modules/node/bin/node.exe` exists in `win-unpacked` and require the packaged Windows Harness smoke test to pass.
 

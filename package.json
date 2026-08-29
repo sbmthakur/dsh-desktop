@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "main": "./out/main/index.js",
+  "desktopName": "dsh-desktop.desktop",
   "author": "DataElement",
   "license": "MIT",
   "repository": {
@@ -36,10 +37,12 @@
     "package:dev:mac:arm64": "node scripts/verify-target.mjs darwin arm64 && npm run build && electron-builder --mac --arm64 --publish never --config electron-builder.dev.cjs",
     "package:dev:mac:x64": "node scripts/verify-target.mjs darwin x64 && npm run build && electron-builder --mac --x64 --publish never --config electron-builder.dev.cjs",
     "package:dev:win": "node scripts/verify-target.mjs win32 x64 && npm run build && electron-builder --win --x64 --publish never --config electron-builder.dev.cjs",
+    "package:dev:linux": "node scripts/verify-target.mjs linux x64 && npm run build && electron-builder --linux --x64 --publish never --config electron-builder.dev.cjs",
     "package:mac": "npm run build && electron-builder --mac --publish never",
     "package:mac:arm64": "node scripts/verify-target.mjs darwin arm64 && npm run build && electron-builder --mac --arm64 --publish never",
     "package:mac:x64": "node scripts/verify-target.mjs darwin x64 && npm run build && electron-builder --mac --x64 --publish never",
-    "package:win": "node scripts/verify-target.mjs win32 x64 && npm run build && electron-builder --win --x64 --publish never"
+    "package:win": "node scripts/verify-target.mjs win32 x64 && npm run build && electron-builder --win --x64 --publish never",
+    "package:linux": "node scripts/verify-target.mjs linux x64 && npm run build && electron-builder --linux --x64 --publish never"
   },
   "dependencies": {
     "@deepseek-ai/cordis-plugin-group": "1.0.1",
@@ -177,6 +180,28 @@
           "arch": [
             "x64"
           ]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "category": "Development",
+      "executableName": "dsh-desktop",
+      "synopsis": "A cross-platform desktop shell for DeepSeek Harness.",
+      "syncDesktopName": true,
+      "maintainer": "Shubham <sbmthakur@gmail.com>",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "pacman",
+          "arch": ["x64"]
+        },
+        {
+          "target": "tar.gz",
+          "arch": ["x64"]
         }
       ]
     },
