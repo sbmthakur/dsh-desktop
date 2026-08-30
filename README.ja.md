@@ -31,6 +31,14 @@ DSH Desktop は、ローカルの DeepSeek Harness をインストール可能�
 
 macOS および Windows 向けの DSH Desktop は、[公式 Web サイト](https://www.dshdesktop.com/#download)からダウンロードできます。
 
+Linux x64 向けのビルドは、この Fork の[リリースページ](https://github.com/sbmthakur/dsh-desktop/releases)で公開しています。どのディストリビューションでも動作する AppImage、Arch 系ディストリビューション向けパッケージ、tarball の 3 種類です。Arch では添付のパッケージをインストールします。
+
+```bash
+sudo pacman -U dsh-desktop-bin-<version>-x86_64.pkg.tar.zst
+```
+
+[`packaging/arch/`](packaging/arch) のレシピから `makepkg -si` で自分でビルドすることもできます。Linux ビルドは更新を確認しません。次のリリースをインストールして更新してください。
+
 インストール版は起動直後と 6 時間ごとに更新を確認します。新しいバージョンが見つかっても、同意するまでダウンロードは始まりません。ダウンロード後に **Restart and install** を選ぶとインストールします。アプリケーションメニューから手動確認したり、今のバージョンだけをスキップしたりすることもできます。
 
 ## コミュニティ
@@ -90,7 +98,7 @@ open -a "DSH Desktop" --args --safe-mode
 | macOS Intel | 署名・公証済み DMG/ZIP | 対応 |
 | Windows x64 | コード署名済み NSIS インストーラー | 対応 |
 | Windows ARM64 | — | 未対応 |
-| Linux x64 | AppImage、pacman パッケージ、tarball | 対応（ソースからビルド） |
+| Linux x64 | AppImage、pacman パッケージ、tarball | 対応 |
 | Linux ARM64 | — | 未対応 |
 
 Harness にはターゲット固有のネイティブ依存関係が含まれるため、各リリースは対応する OS とアーキテクチャ上でビルドされます。
