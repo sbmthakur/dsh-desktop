@@ -1,0 +1,10 @@
+# `makepkg -si` runs in this directory and leaves its downloads and build tree
+# behind, which is several hundred megabytes inside the working tree. Keep them
+# out of the repository. An AUR repository carries the recipe only, so a push
+# containing any of this is rejected there as well.
+*.pkg.tar*
+*.src.tar*
+*.tar.gz
+*.AppImage
+src/
+pkg/
