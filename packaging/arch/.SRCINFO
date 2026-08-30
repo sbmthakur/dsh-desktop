@@ -1,0 +1,30 @@
+pkgbase = dsh-desktop-bin
+	pkgdesc = Local-first desktop app for DeepSeek Harness
+	pkgver = 0.6.3.linux.1
+	pkgrel = 1
+	url = https://github.com/sbmthakur/dsh-desktop
+	arch = x86_64
+	license = MIT
+	license = LGPL-3.0-or-later
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = custom
+	makedepends = imagemagick
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = mesa
+	depends = systemd-libs
+	optdepends = openssh: Pinggy fallback tunnel when Cloudflare is unreachable
+	optdepends = cloudflared: use a system tunnel binary instead of downloading one at runtime
+	optdepends = libnotify: desktop notifications
+	provides = dsh-desktop=0.6.3.linux.1
+	conflicts = dsh-desktop
+	options = !strip
+	options = !debug
+	source = dsh-desktop-0.6.3.linux.1.tar.gz::https://github.com/sbmthakur/dsh-desktop/releases/download/v0.6.3-linux.1/dsh-desktop-linux-x64.tar.gz
+	source = dsh-desktop.desktop
+	sha256sums = 493682c1391e34bbe4075074b37fcc83ba9249726354d1461d229bcb4899a893
+	sha256sums = e5d5093cae55bff904322f93bc9d51a6cb6456e21d10b76346d39402face9092
+
+pkgname = dsh-desktop-bin

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DSH Desktop
+Comment=Local-first desktop app for DeepSeek Harness
+Exec=/opt/dsh-desktop/dsh-desktop %U
+Icon=dsh-desktop
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+StartupWMClass=dsh-desktop
