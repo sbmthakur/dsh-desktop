@@ -144,6 +144,13 @@ describe('GitHub release contract', () => {
       from: 'build/dsh-desktop.patch.yml',
       to: 'dsh-desktop.patch.yml'
     })
+    // MIT asks that the copyright notice travel with every copy, so the
+    // project's own licence has to be in the build and not merely in the
+    // repository — the packaged app is the copy most people ever receive.
+    expect(packageJson.build.extraFiles).toContainEqual({
+      from: 'LICENSE',
+      to: 'LICENSE.txt'
+    })
     // sharp bundles a prebuilt libvips under the LGPL, which obliges whoever
     // hosts a build to carry its license text and a route to the corresponding
     // source. These ride beside Electron's own notices at the application root

@@ -317,7 +317,8 @@
       "node_modules/**/*",
       "package.json",
       "!**/*.map",
-      "!**/node_modules/@mistralai/mistralai/src/**"
+      "!**/node_modules/@mistralai/mistralai/src/**",
+      "!**/node_modules/katex/src/**"
     ],
     "extraResources": [
       {
@@ -362,6 +363,10 @@
       }
     ],
     "extraFiles": [
+      {
+        "from": "LICENSE",
+        "to": "LICENSE.txt"
+      },
       {
         "from": "build/licenses/LGPL-3.0.txt",
         "to": "LICENSE.lgpl-3.0.txt"

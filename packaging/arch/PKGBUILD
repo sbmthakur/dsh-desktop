@@ -17,16 +17,15 @@ url='https://github.com/sbmthakur/dsh-desktop'
 # and LICENSES.chromium.html, both installed under /usr/share/licenses.
 # Chromium's own set is not a single SPDX identifier, so it is referenced
 # rather than enumerated; bare 'custom' is no longer accepted.
+# One identifier per licence file the package actually installs. Enumerating
+# the whole permissive tail here claimed more than the artifact evidences —
+# namcap wants a file per uncommon identifier — and that tail is attribution
+# only, discharged by the notices each package carries in its own directory.
 license=(
   'MIT'
   'LGPL-3.0-or-later'
-  'Apache-2.0'
-  'BSD-2-Clause'
-  'BSD-3-Clause'
-  'ISC'
-  'BlueOak-1.0.0'
-  'CC-BY-4.0'
   'LicenseRef-Chromium'
+  'LicenseRef-third-party-notices'
 )
 
 # Resolved from the DT_NEEDED entries of the shipped binary and its bundled
@@ -91,8 +90,8 @@ package() {
   # namcap expect to find them rather than only under /opt.
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   local _licence
-  for _licence in LICENSE.electron.txt LICENSE.lgpl-3.0.txt THIRD-PARTY-NOTICES.md \
-                  LICENSES.chromium.html; do
+  for _licence in LICENSE.txt LICENSE.electron.txt LICENSE.lgpl-3.0.txt \
+                  THIRD-PARTY-NOTICES.md LICENSES.chromium.html; do
     if [[ -f "${_destdir}/${_licence}" ]]; then
       ln -s "/opt/${_appname}/${_licence}" \
         "${pkgdir}/usr/share/licenses/${pkgname}/${_licence}"

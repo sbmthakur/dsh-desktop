@@ -1,6 +1,6 @@
 # Third-party notices
 
-DSH Desktop is distributed under the [MIT License](https://github.com/dataelement/dsh-desktop/blob/main/LICENSE). A packaged build additionally contains third-party components under their own terms. Most are permissive (MIT, Apache-2.0, ISC, BSD); this file covers the ones that carry obligations beyond attribution.
+DSH Desktop is distributed under the MIT License, whose text and copyright notice are in `LICENSE.txt` beside this file. A packaged build additionally contains third-party components under their own terms. Most are permissive — MIT, Apache-2.0, ISC, BSD-2-Clause, BSD-3-Clause, BlueOak-1.0.0 — and carry attribution requirements only, satisfied by the notices each package ships in its own directory under `resources/app/node_modules`. This file covers the components whose obligations go further.
 
 ## Components under the GNU Lesser General Public License
 

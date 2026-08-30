@@ -2,6 +2,8 @@
 
 This guide covers local development, validation, patch maintenance, and target-native packaging. For the runtime design, see [Architecture](architecture.md). For formal releases, see the [release runbook](release-runbook.md).
 
+This is the Linux fork. For pulling in upstream changes, what diverges from upstream and why, and how releases are cut here, see [Maintaining this fork](fork.md).
+
 ## Prerequisites
 
 - Node.js 22 or later
