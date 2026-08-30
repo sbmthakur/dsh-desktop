@@ -1,18 +1,13 @@
 pkgbase = dsh-desktop-bin
 	pkgdesc = Local-first desktop app for DeepSeek Harness
-	pkgver = 0.7.1.linux.1
+	pkgver = 0.7.1.linux.2
 	pkgrel = 1
 	url = https://github.com/sbmthakur/dsh-desktop
 	arch = x86_64
 	license = MIT
 	license = LGPL-3.0-or-later
-	license = Apache-2.0
-	license = BSD-2-Clause
-	license = BSD-3-Clause
-	license = ISC
-	license = BlueOak-1.0.0
-	license = CC-BY-4.0
 	license = LicenseRef-Chromium
+	license = LicenseRef-third-party-notices
 	makedepends = imagemagick
 	depends = gtk3
 	depends = nss
@@ -22,13 +17,13 @@ pkgbase = dsh-desktop-bin
 	optdepends = openssh: Pinggy fallback tunnel when Cloudflare is unreachable
 	optdepends = cloudflared: use a system tunnel binary instead of downloading one at runtime
 	optdepends = libnotify: desktop notifications
-	provides = dsh-desktop=0.7.1.linux.1
+	provides = dsh-desktop=0.7.1.linux.2
 	conflicts = dsh-desktop
 	options = !strip
 	options = !debug
-	source = dsh-desktop-0.7.1.linux.1.tar.gz::https://github.com/sbmthakur/dsh-desktop/releases/download/v0.7.1-linux.1/dsh-desktop-linux-x64.tar.gz
+	source = dsh-desktop-0.7.1.linux.2.tar.gz::https://github.com/sbmthakur/dsh-desktop/releases/download/v0.7.1-linux.2/dsh-desktop-linux-x64.tar.gz
 	source = dsh-desktop.desktop
-	sha256sums = b5f28c89365cf5e3be1315d29d4e7a5a905e86c3405400c530d424119b76e3e7
+	sha256sums = 2b9e7c7be6109fb15860f12f9de820c2bed3de575303d32063fc783978599830
 	sha256sums = e5d5093cae55bff904322f93bc9d51a6cb6456e21d10b76346d39402face9092
 
 pkgname = dsh-desktop-bin

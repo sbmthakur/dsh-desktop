@@ -4,10 +4,11 @@ pkgname=dsh-desktop-bin
 _appname=dsh-desktop
 # Upstream's release workflow sets the app version from the git tag, so the tag
 # is the version; the 0.1.1 committed in package.json is a placeholder that no
-# release ever bumps. A pkgver cannot contain a hyphen, so the tag's `-linux.1`
-# becomes `.linux.1` here. This still orders after 0.6.3 and before 0.6.4.
-pkgver=0.7.1.linux.1
-_tag='v0.7.1-linux.1'
+# release ever bumps. A pkgver cannot contain a hyphen, so the tag's `-linux.N`
+# becomes `.linux.N` here. That still orders above the previous Linux build and
+# below the next upstream release — check with `vercmp` when bumping.
+pkgver=0.7.1.linux.2
+_tag='v0.7.1-linux.2'
 pkgrel=1
 pkgdesc='Local-first desktop app for DeepSeek Harness'
 arch=('x86_64')
@@ -58,7 +59,7 @@ source=(
   "${_appname}.desktop"
 )
 sha256sums=(
-  'b5f28c89365cf5e3be1315d29d4e7a5a905e86c3405400c530d424119b76e3e7'
+  '2b9e7c7be6109fb15860f12f9de820c2bed3de575303d32063fc783978599830'
   'e5d5093cae55bff904322f93bc9d51a6cb6456e21d10b76346d39402face9092'
 )
 

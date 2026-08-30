@@ -9,7 +9,7 @@ Upstream ships macOS and Windows only. These files are specific to this fork and
 The quickest route is the prebuilt package attached to the [latest Linux release](https://github.com/sbmthakur/dsh-desktop/releases):
 
 ```bash
-sudo pacman -U dsh-desktop-bin-0.7.1.linux.1-1-x86_64.pkg.tar.zst
+sudo pacman -U dsh-desktop-bin-0.7.1.linux.2-1-x86_64.pkg.tar.zst
 ```
 
 To build it yourself instead, from this directory:
