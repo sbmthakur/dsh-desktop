@@ -15,7 +15,19 @@ url='https://github.com/sbmthakur/dsh-desktop'
 # MIT covers the desktop shell. The bundle additionally carries a prebuilt
 # libvips under the LGPL and a long permissive tail; see THIRD-PARTY-NOTICES.md
 # and LICENSES.chromium.html, both installed under /usr/share/licenses.
-license=('MIT' 'LGPL-3.0-or-later' 'Apache-2.0' 'BSD-3-Clause' 'custom')
+# Chromium's own set is not a single SPDX identifier, so it is referenced
+# rather than enumerated; bare 'custom' is no longer accepted.
+license=(
+  'MIT'
+  'LGPL-3.0-or-later'
+  'Apache-2.0'
+  'BSD-2-Clause'
+  'BSD-3-Clause'
+  'ISC'
+  'BlueOak-1.0.0'
+  'CC-BY-4.0'
+  'LicenseRef-Chromium'
+)
 
 # Resolved from the DT_NEEDED entries of the shipped binary and its bundled
 # libraries, minus everything gtk3 already pulls in. The upstream pacman target
