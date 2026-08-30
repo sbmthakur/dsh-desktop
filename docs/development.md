@@ -58,7 +58,6 @@ patches/                  Reproducible patches for the pinned Harness packages
 build/                    Packaged HTML, icons, loaders, and Harness entry files
 scripts/                  Build, signing, metadata, and target verification tools
 test/                     Unit and source-contract regression coverage
-.github/workflows/        Native CI, signing, release, and publication workflows
 ```
 
 ## Maintaining upstream patches
@@ -116,7 +115,7 @@ Every packaged build carries `LICENSE.lgpl-3.0.txt` and `THIRD-PARTY-NOTICES.md`
 
 For local unsigned development packages, use the corresponding `package:dev:*` command. Before handing off a Windows installer, verify that `resources/app/node_modules/node/bin/node.exe` exists in `win-unpacked` and require the packaged Windows Harness smoke test to pass.
 
-Formal release artifacts are built, signed, and published by the tag workflow. A local build or pull-request check is not formal release evidence.
+This fork carries no release workflow. Upstream's built, signed, and published macOS and Windows artifacts on every `v*` tag; here it would fire on each Linux tag, find none of the signing secrets, and fail. Linux releases are cut by hand: build with `npm run package:linux`, then attach the artifacts to a tag. `packaging/arch/README.md` covers refreshing the pacman recipe afterwards.
 
 ## Contribution hygiene
 
